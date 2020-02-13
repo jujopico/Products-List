@@ -25,6 +25,12 @@ class App extends React.Component {
     this.setState({ products });
   }
 
+  eidtProduct = (key, editedProduct) => {
+    const products = {...this.state.products};
+    products[key] = editedProduct;
+    this.setState({ products });
+  }
+
   render(){
     return(
       <div className="productsWraper">
@@ -39,8 +45,10 @@ class App extends React.Component {
               />
             ))}
           </ul>
+          <h1>Add A New Product</h1>
           <AddProductForm
             addProduct={this.addProduct}
+            editProduct={this.editProduct}
           />
         </div>
       </div>

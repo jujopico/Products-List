@@ -1,5 +1,7 @@
 body {
   font-family: sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .productsList {
@@ -27,4 +29,39 @@ tr {
 
 td {
   padding: 5px;
+}
+
+.edit-btn {
+  background-color: rgb(50, 141, 245);
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.delete-btn {
+  background-color: red;
+  border-radius: 5px;
+}
+
+.addProductForm {
+  margin-bottom: 20px;
+  border: 2px solid #000;
+  overflow: hidden;
+  display: flex;
+}
+
+input {
+  width: 33.33%;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: 1px solid #000;
+  background: #fff;
+  margin: 5px;
+}
+
+.add-btn {
+  background-color: #bada55;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px;
+  margin-left: 15px;
 }

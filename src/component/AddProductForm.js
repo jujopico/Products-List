@@ -28,14 +28,60 @@ class AddProductForm extends React.Component {
     return(
         <div className="addProductform">
           <form onSubmit={this.createProduct}>
-            <input name="color" ref={this.colorRef} type="text" placeholder="Color" required />
-            <input name="department" ref={this.departmentRef} type="text" placeholder="Department" required />
-            <input name="productName" ref={this.productNameRef} type="text" placeholder="Product Name" required />
-            <input name="price" ref={this.priceRef} type="number" placeholder="Price" required />
-            <input name="productAdjective" ref={this.productAdjectiveRef} type="text" placeholder="Product Adjective" required />
-            <input name="productMaterial" ref={this.productMaterialRef} type="text" placeholder="Product Material" required />
-            <input name="product" ref={this.productRef} type="text" placeholder="Product" required />
-            <button type="submit" className="add-btn">+ Add A Product</button>
+            <input 
+              name="color" 
+              ref={this.colorRef} 
+              type="text" 
+              placeholder="Color" 
+              required 
+            />
+            <input 
+              name="department" 
+              ref={this.departmentRef} 
+              type="text" 
+              placeholder="Department" 
+              required 
+            />
+            <input 
+              name="productName" 
+              ref={this.productNameRef} 
+              type="text" 
+              placeholder="Product Name" 
+              required 
+            />
+            <input 
+              name="price" 
+              ref={this.priceRef} 
+              type="number" 
+              placeholder="Price" 
+              required 
+            />
+            <input 
+              name="productAdjective" 
+              ref={this.productAdjectiveRef} 
+              type="text" 
+              placeholder="Product Adjective" 
+              required  
+            />
+            <input 
+              name="productMaterial" 
+              ref={this.productMaterialRef} 
+              type="text" 
+              placeholder="Product Material" 
+              required     
+            />
+            <input 
+              name="product" 
+              ref={this.productRef} 
+              type="text" 
+              placeholder="Product" 
+              required      
+            />
+            <button 
+              type="submit" 
+              className="add-btn">
+              + Add A Product
+            </button>
         </form>
         </div>
     )

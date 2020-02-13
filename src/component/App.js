@@ -2,7 +2,6 @@ import React from 'react';
 import sampleProducts from '../sample-products'
 import Product from './Product'
 import AddProductForm from './AddProductForm'
-import '.././'
 
 class App extends React.Component {
   state = {
@@ -42,6 +41,7 @@ class App extends React.Component {
                 key={key}
                 index={key}
                 details={this.state.products[key]}
+                eidtProduct={this.editProduct}
               />
             ))}
           </ul>

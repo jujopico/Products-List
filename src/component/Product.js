@@ -4,16 +4,16 @@ class Product extends React.Component {
   render(){
     const {color, department, productName, price, productAdjective, productMaterial, product} = this.props.details
     return(
-      <li>
-      <h3>{color}</h3>
-      <h3>{department}</h3>
-      <h3>{productName}</h3>
-      <h3>{price}</h3>
-      <h3>{productAdjective}</h3>
-      <h3>{productMaterial}</h3>
-      <h3>{product}</h3>
-    </li>
-    )
+      <tr className="productsTable">
+        <td>{color}</td>
+        <td>{department}</td>
+        <td>{productName}</td>
+        <td>{price}</td>
+        <td>{productAdjective}</td>
+        <td>{productMaterial}</td>
+        <td>{product}</td>
+      </tr>
+    ) 
   }
 }
 

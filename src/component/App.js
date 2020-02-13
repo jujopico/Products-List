@@ -26,19 +26,22 @@ class App extends React.Component {
 
   render(){
     return(
-      <div>
-      <h1>Show the Products!</h1>
-        <ul>
-          {Object.keys(this.state.products).map(key => (
-            <Product
-              key={key}
-              details={this.state.products[key]}
-            />
-          ))}
-        </ul>
-        <AddProductForm
-          addProduct={this.addProduct}
-        />
+      <div className="productsWraper">
+        <div className="productsList">
+        <h1>Products List</h1>
+          <ul className="products">
+            {Object.keys(this.state.products).map(key => (
+              <Product
+                key={key}
+                index={key}
+                details={this.state.products[key]}
+              />
+            ))}
+          </ul>
+          <AddProductForm
+            addProduct={this.addProduct}
+          />
+        </div>
       </div>
     )
   }

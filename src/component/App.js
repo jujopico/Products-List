@@ -5,12 +5,12 @@ import AddProductForm from './AddProductForm'
 
 class App extends React.Component {
   state = {
-    Products: {}
+    products: {}
   }
 
   loadSampleProducts = () => {
     this.setState({ 
-      Products: sampleProducts
+      products: sampleProducts
      })
   }
 
@@ -18,10 +18,10 @@ class App extends React.Component {
     this.loadSampleProducts()
   }
 
-  addProduct = (Product) => {
-    const Products = {...this.state.Products};
-    Products[`Product{Date.now()}`] = Product;
-    this.setState({ Products });
+  addProduct = (product) => {
+    const products = {...this.state.products};
+    products[`product{Date.now()}`] = product;
+    this.setState({ products });
   }
 
   render(){
@@ -29,10 +29,10 @@ class App extends React.Component {
       <div>
       <h1>Show the Products!</h1>
         <ul>
-          {Object.keys(this.state.Products).map(key => (
+          {Object.keys(this.state.products).map(key => (
             <Product
               key={key}
-              details={this.state.Products[key]}
+              details={this.state.products[key]}
             />
           ))}
         </ul>

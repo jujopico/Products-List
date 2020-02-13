@@ -11,7 +11,7 @@ class AddProductForm extends React.Component {
 
   createProduct = (event) => {
     event.preventDefault();
-    const Product = {
+    const product = {
       color: this.colorRef.current.value,
       department: this.departmentRef.current.value,
       productName: this.productNameRef.current.value,
@@ -20,7 +20,7 @@ class AddProductForm extends React.Component {
       productMaterial: this.productMaterial.current.value,
       product: this.product.current.value
     }
-    this.props.addProduct(Product);
+    this.props.addProduct(product);
   }
 
   render(){

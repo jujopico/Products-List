@@ -2,7 +2,7 @@ import React from 'react';
 
 class AddProductForm extends React.Component {
   colorRef = React.createRef();
-  descRef = React.createRef();
+  departmentRef = React.createRef();
   productNameRef = React.createRef();
   priceRef = React.createRef();
   productAdjectiveRef = React.createRef();
@@ -15,12 +15,13 @@ class AddProductForm extends React.Component {
       color: this.colorRef.current.value,
       department: this.departmentRef.current.value,
       productName: this.productNameRef.current.value,
-      price: parseFloat(this.statusRef.current.value),
-      productAdjective: this.productAdjective.current.value,
-      productMaterial: this.productMaterial.current.value,
-      product: this.product.current.value
+      price: parseFloat(this.priceRef.current.value),
+      productAdjective: this.productAdjectiveRef.current.value,
+      productMaterial: this.productMaterialRef.current.value,
+      product: this.productRef.current.value
     }
     this.props.addProduct(product);
+    event.currentTarget.reset();
   }
 
   render(){

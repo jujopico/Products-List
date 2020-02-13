@@ -48,7 +48,6 @@ class App extends React.Component {
           <h1>Add A New Product</h1>
           <AddProductForm
             addProduct={this.addProduct}
-            editProduct={this.editProduct}
           />
         </div>
       </div>

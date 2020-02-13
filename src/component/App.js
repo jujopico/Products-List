@@ -2,6 +2,7 @@ import React from 'react';
 import sampleProducts from '../sample-products'
 import Product from './Product'
 import AddProductForm from './AddProductForm'
+import '.././'
 
 class App extends React.Component {
   state = {

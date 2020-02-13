@@ -10,7 +10,7 @@ class Product extends React.Component {
             <td width="10%">{color}</td>
             <td width="10%">{department}</td>
             <td width="25%">{productName}</td>
-            <td width="8%">{price}</td>
+            <td width="8%">${price}</td>
             <td width="10%">{productAdjective}</td>
             <td width="10%">{productMaterial}</td>
             <td width="10%">{product}</td>

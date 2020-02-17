@@ -24,8 +24,8 @@ class Product extends React.Component {
             <td width="10%">{productAdjective}</td>
             <td width="10%">{productMaterial}</td>
             <td width="10%">{product}</td>
-            <td className="edit-btn" onClick={(this.props.eidtProduct)}><button>Edit</button></td>
-            <td className="delete-btn"><button>Delete</button></td>
+            <td className="edit-btn" onClick={(this.props.eidtProduct)}><button>Edit</button></td> 
+            <td className="delete-btn" onClick={()=> this.props.deleteProduct(productName)}><button>Delete</button></td>
           </tr>
         </table>
       </div>

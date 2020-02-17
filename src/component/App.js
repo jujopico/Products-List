@@ -30,6 +30,18 @@ class App extends React.Component {
     this.setState({ products });
   }
 
+  deleteProduct = (productName) => {
+    let itemToDelete = this.state.products.find(item =>{
+      return(
+        item.productName === productName
+      )
+    })
+      let indexToDelete = this.state.products.indexOf(itemToDelete);
+      let newProductsList = this.state.products.splice(indexToDelete, 1);
+      this.setState([...newProductsList]);
+   }
+  
+
   render(){
     return(
       <div className="productsWraper">
@@ -41,6 +53,7 @@ class App extends React.Component {
                 key={key}
                 index={key}
                 details={this.state.products[key]}
+                deleteProduct={this.deleteProduct}
                 eidtProduct={this.editProduct}
               />
             ))}

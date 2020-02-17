@@ -5,7 +5,7 @@ import AddProductForm from './AddProductForm'
 
 class App extends React.Component {
   state = {
-    products: {}
+    products: []
   }
 
   loadSampleProducts = () => {
@@ -19,26 +19,31 @@ class App extends React.Component {
   }
 
   addProduct = (product) => {
-    const products = {...this.state.products};
-    products[`product{Date.now()}`] = product;
+    const products = [...this.state.products];
+    products[products.length] = product;
     this.setState({ products });
   }
 
-  eidtProduct = (key, editedProduct) => {
-    const products = {...this.state.products};
-    products[key] = editedProduct;
-    this.setState({ products });
-  }
-
-  deleteProduct = (productName) => {
-    let itemToDelete = this.state.products.find(item =>{
+  editProduct = (productName) => {
+    let workingArray = this.state.products
+    let itemToEdit = workingArray.find(item =>{
       return(
         item.productName === productName
       )
     })
-      let indexToDelete = this.state.products.indexOf(itemToDelete);
-      let newProductsList = this.state.products.splice(indexToDelete, 1);
-      this.setState([...newProductsList]);
+    console.log(itemToEdit)
+  }
+
+  deleteProduct = (productName) => {
+    let workingArray = this.state.products
+    let itemToDelete = workingArray.find(item =>{
+      return(
+        item.productName === productName
+      )
+    })
+      let indexToDelete = workingArray.indexOf(itemToDelete);
+      workingArray.splice(indexToDelete, 1);
+      this.setState({products:[...workingArray]});
    }
   
 
@@ -54,7 +59,7 @@ class App extends React.Component {
                 index={key}
                 details={this.state.products[key]}
                 deleteProduct={this.deleteProduct}
-                eidtProduct={this.editProduct}
+                editProduct={this.editProduct}
               />
             ))}
           </ul>

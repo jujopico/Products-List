@@ -1,14 +1,6 @@
 import React from 'react';
 
 class Product extends React.Component {
-  handleChange = (event) => {
-    console.log(event.currentTarget.value);
-    const eidtedProduct = { 
-      ...this.props.product,
-      [event.currentTarget.name]: event.currentTarget.value,
-     };
-    this.props.eidtProduct(this.props.index, eidtedProduct);
-  }
 
   render(){
     const {color, department, productName, price, productAdjective, productMaterial, product} = this.props.details
@@ -24,7 +16,7 @@ class Product extends React.Component {
             <td width="10%">{productAdjective}</td>
             <td width="10%">{productMaterial}</td>
             <td width="10%">{product}</td>
-            <td className="edit-btn" onClick={(this.props.eidtProduct)}><button>Edit</button></td> 
+            <td className="edit-btn" onClick={()=> this.props.editProduct(productName)}><button>Edit</button></td> 
             <td className="delete-btn" onClick={()=> this.props.deleteProduct(productName)}><button>Delete</button></td>
           </tr>
         </table>

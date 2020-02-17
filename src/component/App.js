@@ -5,7 +5,8 @@ import AddProductForm from './AddProductForm'
 
 class App extends React.Component {
   state = {
-    products: []
+    products: [],
+    itemToEdit: {}
   }
 
   loadSampleProducts = () => {
@@ -24,26 +25,28 @@ class App extends React.Component {
     this.setState({ products });
   }
 
+  updateProducts = (products) => this.setState({ products })
+
   editProduct = (productName) => {
-    let workingArray = this.state.products
-    let itemToEdit = workingArray.find(item =>{
+    const currentProductArray = this.state.products;
+    const productToEdit = currentProductArray.find(product =>{
       return(
-        item.productName === productName
+        product.productName === productName
       )
     })
-    console.log(itemToEdit)
+    this.setState({ productToEdit: {...productToEdit} })
   }
 
   deleteProduct = (productName) => {
-    let workingArray = this.state.products
-    let itemToDelete = workingArray.find(item =>{
+    const currentProductArray = this.state.products
+    const itemToDelete = currentProductArray.find(item =>{
       return(
         item.productName === productName
       )
     })
-      let indexToDelete = workingArray.indexOf(itemToDelete);
-      workingArray.splice(indexToDelete, 1);
-      this.setState({products:[...workingArray]});
+      const indexToDelete = currentProductArray.indexOf(itemToDelete);
+      currentProductArray.splice(indexToDelete, 1);
+      this.setState({ products: [...currentProductArray] });
    }
   
 
@@ -63,9 +66,12 @@ class App extends React.Component {
               />
             ))}
           </ul>
-          <h1>Add A New Product</h1>
+          <h1>Add/Update A New Product</h1>
           <AddProductForm
             addProduct={this.addProduct}
+            productToEdit={this.state.productToEdit}
+            currentProducts={this.state.products}
+            updateProducts={this.updateProducts}
           />
         </div>
       </div>

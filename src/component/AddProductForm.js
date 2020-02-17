@@ -1,28 +1,34 @@
 import React from 'react';
 
 class AddProductForm extends React.Component {
-  colorRef = React.createRef();
-  departmentRef = React.createRef();
-  productNameRef = React.createRef();
-  priceRef = React.createRef();
-  productAdjectiveRef = React.createRef();
-  productMaterialRef = React.createRef();
-  productRef = React.createRef();
+  state = {
+      color: "",
+      department: "",
+      productName: "",
+      price: "",
+      productAdjective: "",
+      productMaterial: "",
+      product: ""
+  }
 
   createProduct = (event) => {
-    event.preventDefault();
-    const product = {
-      color: this.colorRef.current.value,
-      department: this.departmentRef.current.value,
-      productName: this.productNameRef.current.value,
-      price: parseFloat(this.priceRef.current.value),
-      productAdjective: this.productAdjectiveRef.current.value,
-      productMaterial: this.productMaterialRef.current.value,
-      product: this.productRef.current.value
-    }
-    this.props.addProduct(product);
-    event.currentTarget.reset();
+    event.preventDefault()
+    const { currentProducts, updateProducts } = this.props;
+    const productToAdd = this.state
+    const existingProductIndex = currentProducts.findIndex(({ productName }) => productName === productToAdd.productName);
+    const isDuplicate = existingProductIndex !== -1;
+    const newProducts = isDuplicate 
+      ? Object.assign(currentProducts, { [existingProductIndex]: productToAdd })
+      : [...currentProducts, productToAdd];
+    updateProducts(newProducts);
   }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.productToEdit !== prevProps.productToEdit) 
+    {
+      this.setState({...this.props.productToEdit})
+    }
+  } 
 
   render(){
     return(
@@ -30,49 +36,56 @@ class AddProductForm extends React.Component {
           <form onSubmit={this.createProduct}>
             <input 
               name="color" 
-              ref={this.colorRef} 
+              value={this.state.color}
+              onChange={(e)=>this.setState({color:e.target.value})} 
               type="text" 
               placeholder="Color" 
               required 
             />
             <input 
               name="department" 
-              ref={this.departmentRef} 
+              value={this.state.department}
+              onChange={(e)=>this.setState({department:e.target.value})} 
               type="text" 
               placeholder="Department" 
               required 
             />
             <input 
               name="productName" 
-              ref={this.productNameRef} 
+              value={this.state.productName}
+              onChange={(e)=>this.setState({productName:e.target.value})} 
               type="text" 
               placeholder="Product Name" 
               required 
             />
             <input 
-              name="price" 
-              ref={this.priceRef} 
+              name="price"
+              value={this.state.price}
+              onChange={(e)=>this.setState({price:e.target.value})} 
               type="number" 
               placeholder="Price" 
               required 
             />
             <input 
               name="productAdjective" 
-              ref={this.productAdjectiveRef} 
+              value={this.state.productAdjective}
+              onChange={(e)=>this.setState({productAdjective:e.target.value})} 
               type="text" 
               placeholder="Product Adjective" 
               required  
             />
             <input 
               name="productMaterial" 
-              ref={this.productMaterialRef} 
+              value={this.state.productMaterial}
+              onChange={(e)=>this.setState({productMaterial:e.target.value})} 
               type="text" 
               placeholder="Product Material" 
               required     
             />
             <input 
               name="product" 
-              ref={this.productRef} 
+              value={this.state.product}
+              onChange={(e)=>this.setState({product:e.target.value})} 
               type="text" 
               placeholder="Product" 
               required      
@@ -80,9 +93,9 @@ class AddProductForm extends React.Component {
             <button 
               type="submit" 
               className="add-btn">
-              + Add A Product
+              Submit
             </button>
-        </form>
+          </form>
         </div>
     )
   }

@@ -1,10 +1,8 @@
 import React from 'react';
 
 class Product extends React.Component {
-
   render(){
     const {color, department, productName, price, productAdjective, productMaterial, product} = this.props.details
-
     return(
       <div className="productsDetails">
         <table className="productsTable">

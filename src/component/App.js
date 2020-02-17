@@ -6,7 +6,7 @@ import AddProductForm from './AddProductForm'
 class App extends React.Component {
   state = {
     products: [],
-    itemToEdit: {}
+    productToEdit: {}
   }
 
   loadSampleProducts = () => {
@@ -28,8 +28,8 @@ class App extends React.Component {
   updateProducts = (products) => this.setState({ products })
 
   editProduct = (productName) => {
-    const currentProductArray = this.state.products;
-    const productToEdit = currentProductArray.find(product =>{
+    const currentProducts = this.state.products;
+    const productToEdit = currentProducts.find(product =>{
       return(
         product.productName === productName
       )
@@ -38,15 +38,15 @@ class App extends React.Component {
   }
 
   deleteProduct = (productName) => {
-    const currentProductArray = this.state.products
-    const itemToDelete = currentProductArray.find(item =>{
+    const currentProducts = this.state.products;
+    const productToDelete = currentProducts.find(product =>{
       return(
-        item.productName === productName
+        product.productName === productName
       )
     })
-      const indexToDelete = currentProductArray.indexOf(itemToDelete);
-      currentProductArray.splice(indexToDelete, 1);
-      this.setState({ products: [...currentProductArray] });
+    const indexToDelete = currentProducts.indexOf(productToDelete);
+    currentProducts.splice(indexToDelete, 1);
+    this.setState({ products: [...currentProducts] });
    }
   
 
